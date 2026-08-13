@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"chmod +x /private/tmp/claude-501/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6/scratchpad/smoke.sh && /private/tmp/claude-501/-Users-kwang-workspace-claude-toy/fbb...",
+  "error": "Exit code 1\n== 1. 이미지 업로드 ==\n  img1=1 img2=2\n  ok   업로드1 url (/uploads/)\n  ok   원본 파일명 보존 (a.jpg)\n== 2. 업로드 거부 케이스 ==\n  ok   텍스트 파일 거부 (400)\n  ok   6MB 초과 거부 (413)\n== 3. 게시글 생성 (한글 + 이미지 2장) ==\n  post id=1\n  ok   한글 제목 왕복 (첫 번째 글 제목)\n  ok   한글 작성자 (광용)\n  FAIL 이미지 2장 연결: got '0' want '2'\n== 4. 댓글 ==\n  ok   댓글 2건 조회 (2)\n  ok   댓글 삭제 204 (204)\n  ok   삭제 후 1건 (1)\n== 5. 목록 (comment_count / thumbnail) ==\n  ok   목록 comment_count (1)\n  ok   목록 thumbnail 존재 (True)\n== 6. 검색 ==\nTraceback (most recent call ...",
+  "timestamp": "2026-07-25T05:35:19.077Z",
+  "retry_count": 2
+}

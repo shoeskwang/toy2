@@ -1,0 +1,328 @@
+{
+  "version": 1,
+  "jobId": "9fdafdaf-5192-4396-a93f-0b258bab4666",
+  "sessionId": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+  "scopeKey": "dea414c774b7c155dd806dc14d4730f4453e33c1d3dc32e9238372c69ce0d85f",
+  "revision": 44,
+  "createdAt": "2026-07-25T05:47:36.168Z",
+  "updatedAt": "2026-07-25T05:47:37.620Z",
+  "producerGraceExpiresAt": "2026-07-25T05:48:06.168Z",
+  "bestEffortDeadlineAt": "2026-07-25T05:48:57.168Z",
+  "producers": {
+    "core": {
+      "state": "sealed",
+      "intentKey": "48d216d0b63cdcb0c1c5e2d99dd06bdbebc0eb992ec68eeed558f7b034f2bdc6",
+      "payloadDigest": "48d216d0b63cdcb0c1c5e2d99dd06bdbebc0eb992ec68eeed558f7b034f2bdc6",
+      "sealedAt": "2026-07-25T05:47:36.333Z",
+      "sealedBy": "foreground"
+    },
+    "wiki": {
+      "state": "no-op",
+      "sealedAt": "2026-07-25T05:47:36.168Z",
+      "sealedBy": "wiki-producer"
+    }
+  },
+  "actions": {
+    "foreground-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 0,
+      "idempotencyKey": "febf6dba2f2536433960a07f7cedce72e946b43ced0896570df80f017b8914d2",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {},
+        "foregroundResult": {
+          "removedTransientFiles": 1,
+          "completedAt": "2026-07-25T05:47:36.332Z"
+        }
+      },
+      "budgetMs": 9000,
+      "completedAt": "2026-07-25T05:47:36.333Z",
+      "lastOutcomeCode": "completed"
+    },
+    "wiki-capture": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 0,
+      "idempotencyKey": "1719cd1ef5b51e0269b78c4cb8c9308c9c1f7b82fd1c067fc034c060f23863f5",
+      "payload": {},
+      "budgetMs": 9000,
+      "completedAt": "2026-07-25T05:47:36.168Z"
+    },
+    "team-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "cee6ac31df545408e1e822247ac249b3f8182a98a5fe8e448ae3b251e55bdee1",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-25T05:47:36.452Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "25d67ffb-25d8-4e2b-a7ee-9e890bfa2b8f",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:36.625Z"
+    },
+    "python-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "1f1370c4ac056606059d517e2f106b602d8cbcb04587b3fcc5f3b9f89e649cd0",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-25T05:47:36.642Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "4dd3860c-f974-4cfe-a694-8e28d16e9f5f",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:36.838Z"
+    },
+    "reply-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "0b3a8b47c28b26d56aca004d4f572b96c118f16819c0d35162418816f9a5420a",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-25T05:47:36.856Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "e3131c01-7103-4264-a759-d98fdd062505",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:37.036Z"
+    },
+    "callback": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "d068ede2655bf89e0c0950e087d0603d7dcf45538e94f20a654d08c6f4841895",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-25T05:47:37.054Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "6a66ed4d-4fa5-4ec9-9093-4b8f9081ce33",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:37.216Z"
+    },
+    "notification": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "89c0438ff63097ce04beb60efb87292ff68a7af350a0ee331f3de9dbf42d62fc",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-25T05:47:37.234Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "588bb325-444b-4716-ad1c-671fe96d083b",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:37.398Z"
+    },
+    "openclaw": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "31fe8f6e1cf204e27006de511df257326fdd98655122ca437013e8779ffc735b",
+      "payload": {
+        "transcriptPath": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+        "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+        "reason": "other",
+        "input": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "transcript_path": "/Users/kwang/.claude/projects/-Users-kwang-workspace-claude-toy/fbb18033-ab13-46cd-a18a-83ebbb88eba6.jsonl",
+          "cwd": "/Users/kwang/workspace/claude-toy/toy-board/frontend",
+          "prompt_id": "08a0bca2-97f0-4688-8912-cd5b2d76e10f",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "fbb18033-ab13-46cd-a18a-83ebbb88eba6",
+          "ended_at": "2026-07-25T05:47:36.165Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-25T05:47:37.415Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "f84b1174-a206-452b-bb5d-8676aa3e257a",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-25T05:47:46.422Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-25T05:47:37.582Z"
+    }
+  },
+  "owner": null,
+  "phase": "complete",
+  "completion": {
+    "completedAt": "2026-07-25T05:47:37.601Z",
+    "terminalDigest": "61ad815bc6c33f957e495aaead17974df7b2500d44b2326b345c2ab6b64b980a",
+    "terminalRevision": 43
+  }
+}

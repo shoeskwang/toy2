@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Tailwind v4 는 CSS-first 설정이다. tailwind.config.js / postcss.config.js 를
+   만들지 말 것 — vite 플러그인과 위 import 한 줄이 전부다. */
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
