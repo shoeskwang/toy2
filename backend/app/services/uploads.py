@@ -1,17 +1,16 @@
+"""이미지 업로드 로직 — 크기 제한, 포맷 검증, 디스크 저장."""
+
 import uuid
 from io import BytesIO
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import HTTPException, UploadFile, status
 from PIL import Image as PILImage
 from PIL import UnidentifiedImageError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..config import get_settings
-from ..database import get_db
 from ..models import Image
 from ..schemas import ImageOut
-
-router = APIRouter(prefix="/api/uploads", tags=["uploads"])
 
 settings = get_settings()
 
@@ -62,10 +61,7 @@ def _detect_format(data: bytes) -> tuple[str, str]:
     return ALLOWED_FORMATS[fmt]
 
 
-@router.post("", response_model=ImageOut, status_code=status.HTTP_201_CREATED)
-async def upload_image(
-    file: UploadFile = File(...), db: AsyncSession = Depends(get_db)
-) -> ImageOut:
+async def upload_image(db: AsyncSession, file: UploadFile) -> ImageOut:
     data = await _read_capped(file, settings.max_upload_bytes)
     ext, content_type = _detect_format(data)
 

@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import REQUIRED_DB_NAME, get_settings
 from .database import Base, engine
-from .routers import comments, posts, uploads
+from .router import router
 
 settings = get_settings()
 
@@ -36,9 +36,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(posts.router)
-app.include_router(comments.router)
-app.include_router(uploads.router)
+app.include_router(router)
 
 # 업로드된 원본 이미지는 /api 가 아닌 /uploads 로 서빙한다.
 app.mount("/uploads", StaticFiles(directory=settings.upload_path), name="uploads")

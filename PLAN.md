@@ -99,7 +99,13 @@ toy-board/
 │   │   ├── database.py        # async engine, async_sessionmaker, get_db
 │   │   ├── models.py          # SQLAlchemy 모델 (Post, Comment, Image)
 │   │   ├── schemas.py         # Pydantic v2 스키마
-│   │   └── routers/
+│   │   ├── router.py          # /api 집계 지점 (include_router 만)
+│   │   ├── endpoints/         # 도메인별 APIRouter — 엔드포인트 선언만
+│   │   │   ├── __init__.py
+│   │   │   ├── posts.py
+│   │   │   ├── comments.py
+│   │   │   └── uploads.py
+│   │   └── services/          # 도메인 로직 (엔드포인트는 여기로 위임)
 │   │       ├── __init__.py
 │   │       ├── posts.py
 │   │       ├── comments.py
@@ -277,9 +283,10 @@ server: {
 8. `main.py`: lifespan에서 `create_all`, CORS(5174), `app.mount("/uploads", StaticFiles(...))`, 라우터 등록
 
 ### Phase 2 — Backend API
-9. `routers/posts.py` (목록·페이지네이션·검색·comment_count 서브쿼리, CRUD)
-10. `routers/comments.py`
-11. `routers/uploads.py` (검증·저장·레코드 생성) + 게시글 삭제 시 디스크 파일 정리
+9. `services/posts.py` (목록·페이지네이션·검색·comment_count 서브쿼리, CRUD)
+10. `services/comments.py`
+11. `services/uploads.py` (검증·저장·레코드 생성) + 게시글 삭제 시 디스크 파일 정리
+    → `endpoints/*.py` 에 엔드포인트 선언, `router.py` 가 `/api` 로 집계
 12. 검증: `uv run fastapi dev app/main.py --port 8000` 후 curl 스모크 테스트
     (업로드 → 글 생성 with image_ids → 상세 → 댓글 → 삭제)
 13. **격리 확인 (계정 공유이므로 특히 중요)**:

@@ -1,17 +1,16 @@
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+"""게시글 도메인 로직. 라우터는 여기 있는 함수만 호출한다."""
+
+from fastapi import HTTPException, status
 from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from ..database import get_db
 from ..models import Comment, Image, Post
 from ..schemas import PageOut, PostCreate, PostDetail, PostSummary, PostUpdate
 from ..storage import remove_image_files
 
-router = APIRouter(prefix="/api/posts", tags=["posts"])
 
-
-async def _get_post_or_404(db: AsyncSession, post_id: int) -> Post:
+async def get_post_or_404(db: AsyncSession, post_id: int) -> Post:
     """관계까지 미리 로드해서 가져온다. async 에서 lazy load 는 MissingGreenlet 을 낸다.
 
     populate_existing 이 없으면, 같은 세션에서 이미 로드된 인스턴스의 컬렉션을
@@ -66,12 +65,8 @@ async def _claim_images(db: AsyncSession, post: Post, image_ids: list[int]) -> N
             await db.delete(img)
 
 
-@router.get("", response_model=PageOut[PostSummary])
 async def list_posts(
-    db: AsyncSession = Depends(get_db),
-    page: int = Query(1, ge=1),
-    size: int = Query(10, ge=1, le=50),
-    q: str | None = Query(None),
+    db: AsyncSession, *, page: int, size: int, q: str | None
 ) -> PageOut[PostSummary]:
     filters = []
     if q:
@@ -112,10 +107,7 @@ async def list_posts(
     return PageOut(items=items, total=total, page=page, size=size)
 
 
-@router.post("", response_model=PostDetail, status_code=status.HTTP_201_CREATED)
-async def create_post(
-    payload: PostCreate, db: AsyncSession = Depends(get_db)
-) -> PostDetail:
+async def create_post(db: AsyncSession, payload: PostCreate) -> PostDetail:
     post = Post(title=payload.title, content=payload.content, author=payload.author)
     db.add(post)
     await db.flush()  # id 를 확보해야 이미지를 붙일 수 있다.
@@ -124,30 +116,27 @@ async def create_post(
     await _claim_images(db, post, payload.image_ids)
 
     await db.commit()
-    return PostDetail.model_validate(await _get_post_or_404(db, post.id))
+    return PostDetail.model_validate(await get_post_or_404(db, post.id))
 
 
-@router.get("/{post_id}", response_model=PostDetail)
-async def get_post(post_id: int, db: AsyncSession = Depends(get_db)) -> PostDetail:
-    return PostDetail.model_validate(await _get_post_or_404(db, post_id))
+async def get_post(db: AsyncSession, post_id: int) -> PostDetail:
+    return PostDetail.model_validate(await get_post_or_404(db, post_id))
 
 
-@router.put("/{post_id}", response_model=PostDetail)
 async def update_post(
-    post_id: int, payload: PostUpdate, db: AsyncSession = Depends(get_db)
+    db: AsyncSession, post_id: int, payload: PostUpdate
 ) -> PostDetail:
-    post = await _get_post_or_404(db, post_id)
+    post = await get_post_or_404(db, post_id)
     post.title = payload.title
     post.content = payload.content
     await _claim_images(db, post, payload.image_ids)
 
     await db.commit()
-    return PostDetail.model_validate(await _get_post_or_404(db, post_id))
+    return PostDetail.model_validate(await get_post_or_404(db, post_id))
 
 
-@router.delete("/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_post(post_id: int, db: AsyncSession = Depends(get_db)) -> None:
-    post = await _get_post_or_404(db, post_id)
+async def delete_post(db: AsyncSession, post_id: int) -> None:
+    post = await get_post_or_404(db, post_id)
     # 레코드는 cascade 로 지워지지만 디스크 파일은 직접 치워야 한다.
     remove_image_files(post.images)
     await db.delete(post)

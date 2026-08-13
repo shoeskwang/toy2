@@ -1,21 +1,15 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+"""댓글 도메인 로직."""
+
+from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database import get_db
 from ..models import Comment, Post
 from ..schemas import CommentCreate, CommentOut
 
-router = APIRouter(prefix="/api", tags=["comments"])
 
-
-@router.post(
-    "/posts/{post_id}/comments",
-    response_model=CommentOut,
-    status_code=status.HTTP_201_CREATED,
-)
 async def create_comment(
-    post_id: int, payload: CommentCreate, db: AsyncSession = Depends(get_db)
+    db: AsyncSession, post_id: int, payload: CommentCreate
 ) -> CommentOut:
     exists = await db.scalar(select(Post.id).where(Post.id == post_id))
     if exists is None:
@@ -28,8 +22,7 @@ async def create_comment(
     return CommentOut.model_validate(comment)
 
 
-@router.delete("/comments/{comment_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_comment(comment_id: int, db: AsyncSession = Depends(get_db)) -> None:
+async def delete_comment(db: AsyncSession, comment_id: int) -> None:
     comment = await db.get(Comment, comment_id)
     if comment is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "댓글을 찾을 수 없습니다.")
